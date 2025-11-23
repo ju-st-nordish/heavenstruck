@@ -1,0 +1,49 @@
+<!-- product.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Heavenstruck — Kreativ-Anleitung</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>/* minimal styling */ body{font-family:system-ui;margin:40px} .card{max-width:600px}</style>
+</head>
+<body>
+  <h1>Creative PDF Anleitung — "Botanical Collage"</h1>
+  <p>Jetzt herunterladen — 0,00 € (oder setze Preis)</p>
+
+  <!-- Email capture -->
+  <label>E-Mail für Download (wichtig): <input id="email" type="email" required></label>
+  <div id="payment-element" class="card"></div>
+
+  <button id="submit">Download / Bezahlen</button>
+  <div id="message"></div>
+
+  <script>
+    const stripe = Stripe("pk_live_...DEIN_PUBLISHABLE_KEY..."); // Publishable Key
+    async function init() {
+      // Create PaymentIntent / session on server
+      const resp = await fetch("/api/create-payment-intent", {
+        method: "POST",
+        headers: {'content-type':'application/json'},
+        body: JSON.stringify({email: document.getElementById('email').value || "" , product_id: "guide_botanical"})
+      });
+      const {clientSecret, publishableKey} = await resp.json();
+
+      const elements = stripe.elements({clientSecret});
+      const paymentElement = elements.create('payment');
+      paymentElement.mount('#payment-element');
+
+      document.getElementById('submit').addEventListener('click', async (e) => {
+        document.getElementById('submit').disabled = true;
+        const {error} = await stripe.confirmPayment({elements, confirmParams: {return_url: window.location.href + "?payment=complete"}});
+        if (error) {
+          document.getElementById('message').textContent = error.message;
+          document.getElementById('submit').disabled = false;
+        }
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
