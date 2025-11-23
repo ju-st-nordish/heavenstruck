@@ -6,7 +6,7 @@ if (!downloadBtn) {
     const year = document.getElementById('year');
     if (year) year.textContent = new Date().getFullYear();
 
-    const PDF_FILENAME = 'Testprodukt.pdf';
+    const PDF_FILENAME = 'Maschenmarkierer-Vorlagen.pdf';
 
     // Wichtig: absoluter Pfad vom Root
     const PDF_ENDPOINT = `/assets/pdfs/${encodeURIComponent(PDF_FILENAME)}`;
