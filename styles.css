@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
+
 :root {
     --max-w: 880px;
     --accent: #8b5cf6;
@@ -50,8 +52,11 @@ body {
 }
 
 .brand h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    font-family: 'Calligraffitti', cursive !important;
+    font-style: normal !important;    /* zwingend Regular, nicht kursiv */
+    font-weight: 400;                  /* Regular */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     letter-spacing: 0.06em;
     font-size: 40px;
     margin: 0;
@@ -78,6 +83,7 @@ body {
     margin: 0 0 8px;
     font-size: 22px;
     color: #3b2a5f;
+    font-family: 'Poppins', cursive;
 }
 
 .card p {
@@ -139,3 +145,4 @@ body {
         padding: 20px;
     }
 }
+
