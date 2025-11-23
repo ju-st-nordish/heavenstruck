@@ -1,43 +1,141 @@
-:root{
---max-w: 880px;
---accent: #8b5cf6; /* soft purple */
---muted: #666666;
+:root {
+    --max-w: 880px;
+    --accent: #8b5cf6;
+
+    /* soft purple */
+    --muted: #666666;
 }
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-margin:0; color:#222; background:linear-gradient(180deg,#fffafc 0%, #f7fbff 100%);
--webkit-font-smoothing:antialiased;
+
+* {
+    box-sizing: border-box;
 }
-.page{
-position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-padding:48px 20px;
-max-width:var(--max-w); margin:0 auto;
+
+html,
+body {
+    height: 100%;
 }
-.clouds{ position:fixed; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none; }
-.brand{ text-align:center; margin-bottom:18px; }
-.brand h1{ font-family: 'Georgia', serif; font-weight:400; letter-spacing:0.06em; font-size:40px; margin:0; color:#4b2e6b; }
-.tag{ margin:6px 0 0; color:var(--muted); }
-.card{
-background: rgba(255,255,255,0.7); backdrop-filter: blur(6px) saturate(120%);
-padding:28px; border-radius:16px; box-shadow: 0 10px 30px rgba(16,24,40,0.08);
-width:100%; max-width:640px; text-align:center;
+
+body {
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    margin: 0;
+    color: #222;
+    background: linear-gradient(180deg,#fffafc 0%, #f7fbff 100%);
+    -webkit-font-smoothing: antialiased;
 }
-.card h2{ margin:0 0 8px; font-size:22px; color:#3b2a5f }
-.card p{ color:var(--muted); margin:0 0 14px }
-.actions{ display:flex; gap:12px; justify-content:center; align-items:center; margin:12px 0 4px }
-.btn{
-display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:600;
-background: linear-gradient(90deg,#ffd7e6, #e6f7ff); color:#3b2a5f; border:1px solid rgba(0,0,0,0.04);
-box-shadow: 0 6px 18px rgba(139,92,246,0.08);
+
+.page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+    max-width: var(--max-w);
+    margin: 0 auto;
 }
-.btn:focus{ outline:3px solid rgba(139,92,246,0.18); outline-offset:3px }
-.icon-link svg{ width:36px; height:36px; color:#3b2a5f; opacity:0.95 }
-.small{ font-size:13px; color:#777; margin-top:10px }
-.foot{ margin-top:22px; color:#9a86b6 }
+
+.clouds {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.brand {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.brand h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    font-size: 40px;
+    margin: 0;
+    color: #4b2e6b;
+}
+
+.tag {
+    margin: 6px 0 0;
+    color: var(--muted);
+}
+
+.card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(6px) saturate(120%);
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+    width: 100%;
+    max-width: 640px;
+    text-align: center;
+}
+
+.card h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    color: #3b2a5f;
+}
+
+.card p {
+    color: var(--muted);
+    margin: 0 0 14px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0 4px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    background: linear-gradient(90deg,#ffd7e6, #e6f7ff);
+    color: #3b2a5f;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 6px 18px rgba(139,92,246,0.08);
+}
+
+.btn:focus {
+    outline: 3px solid rgba(139,92,246,0.18);
+    outline-offset: 3px;
+}
+
+.icon-link svg {
+    width: 36px;
+    height: 36px;
+    color: #3b2a5f;
+    opacity: 0.95;
+}
+
+.small {
+    font-size: 13px;
+    color: #777;
+    margin-top: 10px;
+}
+
+.foot {
+    margin-top: 22px;
+    color: #9a86b6;
+}
 
 @media (max-width:520px){
-.brand h1{ font-size:28px }
-.card{ padding:20px }
+    .brand h1 {
+        font-size: 28px;
+    }
+
+    .card {
+        padding: 20px;
+    }
 }
