@@ -1,5 +1,5 @@
-// Simple logic: fetch PDF from '/pdf' endpoint and trigger download
 const downloadBtn = document.getElementById('downloadBtn');
+
 if (!downloadBtn) {
     console.warn('downloadBtn not found');
 } else {
@@ -7,15 +7,18 @@ if (!downloadBtn) {
     if (year) year.textContent = new Date().getFullYear();
 
     const PDF_FILENAME = 'Testprodukt.pdf';
-    const PDF_ENDPOINT = `assets/pdfs/${encodeURIComponent(PDF_FILENAME)}`; // local path
+
+    // Wichtig: absoluter Pfad vom Root
+    const PDF_ENDPOINT = `/assets/pdfs/${encodeURIComponent(PDF_FILENAME)}`;
 
     async function startDownload(e){
         e.preventDefault();
         downloadBtn.setAttribute('aria-busy','true');
         downloadBtn.textContent = 'Lade...';
+
         try{
-            const resp = await fetch(PDF_ENDPOINT);
-            if(!resp.ok) throw new Error('Fehler beim Laden der Datei');
+            const resp = await fetch(PDF_ENDPOINT, { method: 'GET' });
+            if(!resp.ok) throw new Error(`PDF not found at ${PDF_ENDPOINT}`);
 
             const blob = await resp.blob();
             const url = URL.createObjectURL(blob);
@@ -26,13 +29,13 @@ if (!downloadBtn) {
             document.body.appendChild(a);
             a.click();
             a.remove();
-            URL.revokeObjectURL(url);
 
+            URL.revokeObjectURL(url);
             downloadBtn.textContent = 'Download starten';
         }catch(err){
             console.error(err);
             downloadBtn.textContent = 'Download fehlgeschlagen';
-            alert('Konnte PDF nicht laden. Überprüfe Pfad oder Server');
+            alert(`Konnte PDF nicht laden. Prüfe Pfad: ${PDF_ENDPOINT}`);
         }finally{
             downloadBtn.removeAttribute('aria-busy');
             setTimeout(()=> downloadBtn.textContent = 'PDF herunterladen', 1400);
